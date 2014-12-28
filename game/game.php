@@ -1087,10 +1087,11 @@
 
 </body>
 </html>
-<?
-	////////////////////////////////////////////////////
-	// do this after everything is sent
-	
-	$query = "update webrpg_characters set state='1',timelastaction=NOW() where id=".$_SESSION['char']['id'];
-	$result = mysql_query($query);
+
+<?php
+  // Do this after everything is sent.
+  $sql = "UPDATE webrpg_characters SET state='1', timelastaction=NOW() WHERE id=". $_SESSION['char']['id'];
+  if(!$result=$db->query($sql)) {
+    die($db->error);
+  }
 ?>
